@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./js/happyChat.js"></script>
+</head>
+<style>
+    body{
+        margin:0px;
+        padding:0px;
+    }
+    /*登录注册*/
+    #user_login{
+        margin: 50px auto auto auto;
+        height: 800px;;
+        width: 600px;
+        height: 400px;
+        background-color: rgba(138, 35, 27, 0.12);
+        border-radius: 20px;
+        border: solid 1px;
+    }
+    .user_register{
+        margin-top: 100px;
+        width: 100%;
+        display: block;
+    }
+    .user_name{
+        width: 400px;
+        margin: auto;
+    }
+    .user_password{
+        width: 400px;
+        margin: 50px auto auto auto;
+    }
+    .btn_register{
+        width: 210px;
+        margin: auto;
+    }
+    .btn_register input{
+        width: 60px;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgba(127, 109, 238, 0.07);
+        margin-top: 50px;
+        margin-left: 30px;
+    }
+    label{
+        width: 100px;
+        display: block;
+        float: left;
+    }
+    /*会话聊天*/
+    #container{
+        width: 100%;
+        height: auto;
+        display: none;
+        text-align: center;
+    }
+    #historyInfo{
+        display: block;
+        width:400px;
+        height: 400px;
+        margin:auto;
+        border: solid 1px;
+        text-align: left;
+    }
+    .input_box{
+        width:400px;
+        height:auto;
+        margin:10px auto auto auto;
+    }
+    #chattingInfo{
+        width:300px;
+        height: 30px;
+    }
+    #sendInfo{
+        width:90px;
+        height: 35px;
+        border-radius: 5px;
+    }
+</style>
+<body>
+<div id="user_login">
+    <form class="user_register">
+        <div class="user_name">
+            <label>用户名：</label><input id="userName" type="text">
+        </div>
+        <div class="user_password">
+            <label>密  码：</label><input id="userPassword" type="text">
+        </div>
+        <div class="btn_register">
+            <input id="login_btn" type="button" value="登录">
+            <input id="register_btn" type="button" value="注册">
+        </div>
+    </form>
+</div>
+<div id="container">
+    <p>聊天室</p>
+    <div id="historyInfo"></div>
+    <div class="input_box">
+        <input type="text" id="chattingInfo">
+        <input type="button" id="sendInfo" value="发送">
+    </div>
+</div>
+</body>
+
+</html>
