@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/zhaokgithub/happyChatting/issues"
   },
-  "homepage": "https://github.com/zhaokgithub/happyChatting#readme"
+  "homepage": "https://github.com/zhaokgithub/happyChatting#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
