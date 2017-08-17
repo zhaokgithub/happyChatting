@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HappyChatting</title>
     <link href="./css/style.css" rel="stylesheet" type="text/css">
     <script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
     <script src="./node_modules/jquery/dist/jquery.js"></script>
@@ -30,6 +30,11 @@
             <div class="online_number"></div>
         </div>
         <div id="history_info"></div>
+        <div class="other_info">
+            <a href="javascript:;" class="file">选择图片
+                <input type="file" name="" id="sendImg">
+            </a>
+        </div>
         <div class="input_box">
             <textarea id="chat_info" rows="8" cols="30"></textarea>
             <input type="button" id="sendInfo" value="Send">

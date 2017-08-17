@@ -11,6 +11,7 @@ var http = require('http'),
     io = require('socket.io').listen(server);
 
 app.use('/', express.static(__dirname));
+console.log(app);
 server.listen(8080, '127.0.0.1');
 
 //socket与客户端连接
@@ -31,9 +32,7 @@ io.on('connection', function (socket) {
     socket.on('postMsg', function (msg, userName) {
         //接收到的消息,发送除自己之外的人
         // socket.broadcast.emit('newMsg',  msg);
-        //接收到的消息,发送除所有人
         if (msg !== '') {
-            //socket.broadcast.emit('newMsg',  msg);
             io.sockets.emit('newMsg', msg, userName);
         }
         // //接收到的消息,发送给自己
@@ -44,6 +43,9 @@ io.on('connection', function (socket) {
         users.splice(socket.userId, 1);
         //通知除自己以外的所有人
         //socket.broadcast.emit('system', socket.nickname, users.length, 'logout');
+    });
+    socket.on('img',function(img,userName){
+        io.sockets.emit('imgInfo', img, userName);
     });
 });
 

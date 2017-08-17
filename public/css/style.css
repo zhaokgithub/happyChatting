@@ -75,7 +75,7 @@ label{
 .input_box{
     width:800px;
     height:auto;
-    margin:10px auto auto auto;
+    margin:auto;
 }
 #chat_info{
     width:400px;
@@ -84,10 +84,43 @@ label{
     float: left;
 }
 #sendInfo{
-    width:200px;
-    height: 80px;
+    width:100px;
+    height: 40px;
+    color: white;
     margin-left: 10px;
-    border-radius: 5px;
-    font-size: 40px;
+    border-radius: 8px;
+    font-size: 12px;
+    background-color: #212121;
     font-family: Tahoma;
+}
+.other_info{
+    width:800px;
+    height:auto;
+    margin:10px auto auto auto;
+}
+.file {
+    position: relative;
+    display: inline-block;
+    background: #1b2022;
+    border: 1px solid #0d1215;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
 }

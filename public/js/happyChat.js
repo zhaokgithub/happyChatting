@@ -28,6 +28,25 @@ function happyChat() {
             }
         });
     });
+    //发送图片
+    $('#sendImg').change(function(){
+        console.log(this);
+        if(this.files.length !== 0){
+            var file =this.files[0];
+         var reader=new FileReader();
+            if(!reader){
+                alert('您的浏览器不支持reader,请使用更高版本。');
+            }else{
+                reader.onload = function(e) {
+                    //读取成功，显示到页面并发送到服务器
+                    this.value = '';
+                    socket.emit('img', e.target.result,userName);
+                };
+                reader.readAsDataURL(file);
+            }
+
+        }
+    });
     //发送信息
     $('#sendInfo').click(function () {
         var info = $('#chat_info').val();
@@ -38,6 +57,10 @@ function happyChat() {
     //接收服务端消息
     socket.on('newMsg', function (msg, userName) {
         displayNewMsg(msg, userName);
+    });
+    //接收图片
+    socket.on('imgInfo',function(img,userName){
+        displayImg(img,userName);
     });
 }
 //展现接收到的信息
@@ -54,4 +77,13 @@ function displayOnlineNum(num) {
     $('#chat_header .online_number').append(temHtml);
 
 }
+//转换图片正确展示
+function displayImg(img, userName) {
+    var date = new Date().toTimeString().substr(0, 8);
+    var temHtml = "<p>" + "<span style='color:lightskyblue'>" + userName
+        + "  " + date + "</span>" + "</p>"
+        + '<a href="' + img + '" target="_blank"><img src="' + img + '"/></a>';
+    $('#history_info').append(temHtml);
+}
+
 
