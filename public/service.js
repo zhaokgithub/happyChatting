@@ -4,6 +4,7 @@
  *description the server of chatting room.
  */
 var http = require('http'),
+    fs=require('fs');
     express = require('express'),
     app = express(),
     users = [],
@@ -35,8 +36,9 @@ io.on('connection', function (socket) {
         if (msg !== '') {
             io.sockets.emit('newMsg', msg, userName);
         }
+        addLog(msg,userName,false);
         // //接收到的消息,发送给自己
-        // socket.emit('message', msg);
+        // socket.emit('age', msg);
     });
     socket.on('disconnect', function () {
         //将断开连接的用户从users中删除
@@ -46,8 +48,32 @@ io.on('connection', function (socket) {
     });
     socket.on('img',function(img,userName){
         io.sockets.emit('imgInfo', img, userName);
+        addLog(img,userName,true);
     });
 });
 
+function addLog(msg,userName,isImg){
+    var timeScamp=new Date();
+    if(!isImg){
+        var data = userName+":"+msg+timeScamp.toDateString()+'\r\n';
+        var dataBuffer=new Buffer(data);
+        fs.appendFile('./log/log.txt',dataBuffer,function (err) {
+            if(!err)console.log('日志添加成功！');
+        });
+    }else {
+        var options={
+            flag:'w+',
+            encoding:'base64'
+        };
+        fs.writeFile('./log/'+timeScamp.toDateString()+'.png',options,function (err) {
+            if(!err){
+                console.log('写入成写入成功!');
+            }else{
+                console.log(err);
+            }
+        });
+    }
+
+}
 
 console.log('127.0.0.1:8080服务已启动!');
